@@ -1,12 +1,19 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'; 
 import './Cell.css';
  
 class Cell extends Component {
-  render() {
+  render( ) {
+    var cellType= {
+      normal:"cell ",
+      snake:" cell cell-snake",
+      fruit:" cell cell-fruit"
+    };
+    
     return (
-      <div className="cell cell-normal">
-       
+
+      <div className={cellType[this.props.type]}   >
+
+     {/* {this.props.xvalue}|{this.props.yvalue} */}
       </div>
     );
   }
