@@ -24,7 +24,6 @@ class App extends Component {
       moveSnakeInterval: null,
       isRunning: false,
       highestScore:0
-
     };
     for (var i = 0; i < defaultheight; i++) {
       this.state.cells[i] = [];
@@ -199,9 +198,9 @@ this.startGame();
     for (var i = 0; i < this.state.height; i++) {
       var row = [];
       for (var j = 0; j < this.state.width; j++) {
-        row.push(<td key={count}  ><Cell value={count++} xvalue={i} yvalue={j} type={currentCells[i][j]} /></td>);
+        row.push(<div key={count}  ><Cell value={count++} xvalue={i} yvalue={j} type={currentCells[i][j]} /></div>);
       }
-      boardContent.push(<tr key={i}>{row}</tr>);
+      boardContent.push(<div className="columnsContainer" key={i}>{row}</div>);
     }
 
 
@@ -209,11 +208,11 @@ this.startGame();
     return (
       <div className="App" onKeyDown={this.setDirection} tabIndex="0"  >
         <p>Score : {this.state.score}</p><p>Highest Score : {this.state.highestScore}</p>
-        <table className="board" >
-          <tbody>
+        <div className="board" >
+          < div className="rowsContainer">
             {boardContent}
-          </tbody>
-        </table>
+          </div>
+        </div>
         <button disabled={!this.state.isRunning} onClick={this.restartGame}>Restart</button>
         <button disabled={this.state.isRunning} onClick={this.startGame}>Start</button>
       </div>

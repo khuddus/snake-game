@@ -4,6 +4,14 @@
   
   
 }
+.rowsContainer {
+  display: flex;
+  flex-direction: column;
+}
+.columnsContainer {
+  display: flex;
+  flex-direction: row;
+}
  .board{
    border-spacing: 0px
  }
