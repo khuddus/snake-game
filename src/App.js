@@ -23,7 +23,7 @@ class App extends Component {
       timegap: 300,
       moveSnakeInterval: null,
       isRunning: false,
-      highestScore:0
+      highestScore: 0
     };
     for (var i = 0; i < defaultheight; i++) {
       this.state.cells[i] = [];
@@ -77,10 +77,10 @@ class App extends Component {
     if (nextHead[0] == this.state.fruit[0] && nextHead[1] == this.state.fruit[1]) {
       fruitValue++;
       newScore++;
-      if(newScore%5)this.speedUpGame(20);
-      if(newScore>newHighestScore)
-      newHighestScore=newScore;
-      
+      if (newScore % 5) this.speedUpGame(20);
+      if (newScore > newHighestScore)
+        newHighestScore = newScore;
+
     }
     newSnake.push(nextHead);
     for (var i = 0; i < this.state.snake.length - 1 + fruitValue; i++) {
@@ -98,33 +98,33 @@ class App extends Component {
         snake: newSnake,
         fruit: newFruit,
         score: newScore,
-        highestScore: newHighestScore
+        highestScore: newHighestScore,
       }
     ))
     // console.log(this.state.snake);
   };
   restartGame() {
-    
+
 
     const x = parseInt(Math.random() * this.state.height);
     const y = parseInt(Math.random() * this.state.width);
     var newFruit = [x, y];
-    var newCells=[];
+    var newCells = [];
     for (var i = 0; i < this.state.height; i++) {
       newCells[i] = [];
       for (var j = 0; j < this.state.width; j++)
         newCells[i][j] = "normal";
     }
-var newSnake=[];
+    var newSnake = [];
     newSnake.push([5, 5])
 
     // console.log(this.state.cells);
     var newCells2 = this.state.cells.slice();
     newCells2[newFruit[0]][newFruit[1]] = "fruit";
     newCells = newCells2;
-    this.setState ( {
+    this.setState({
       timerCount: 0,
-        snake: newSnake,
+      snake: newSnake,
       cells: newCells,
       fruit: newFruit,
       direction: 39,
@@ -134,27 +134,27 @@ var newSnake=[];
       isRunning: false
 
     });
- 
 
-this.startGame();
+
+    this.startGame();
   }
 
   speedUpGame(speedDifference) {
-    if(this.state.timegap-speedDifference > 30){ 
-      var newTimeGap=this.state.timegap-speedDifference;
-    if (this.state.moveSnakeInterval)
-      clearInterval(this.state.moveSnakeInterval);
-    var newMoveSnakeInterval = setInterval(() => (
+    if (this.state.timegap - speedDifference > 30) {
+      var newTimeGap = this.state.timegap - speedDifference;
+      if (this.state.moveSnakeInterval)
+        clearInterval(this.state.moveSnakeInterval);
+      var newMoveSnakeInterval = setInterval(() => (
 
-      this.moveSnake()
-    ), newTimeGap);
-    this.setState(previousState => (
-      {
-        timegap:newTimeGap,
-        isRunning: true,
-        moveSnakeInterval: newMoveSnakeInterval
-      }
-    ));
+        this.moveSnake()
+      ), newTimeGap);
+      this.setState(previousState => (
+        {
+          timegap: newTimeGap,
+          isRunning: true,
+          moveSnakeInterval: newMoveSnakeInterval
+        }
+      ));
     }
   }
   startGame() {
@@ -207,6 +207,9 @@ this.startGame();
 
     return (
       <div className="App" onKeyDown={this.setDirection} tabIndex="0"  >
+        <h1> Our snake is hungry and sad? </h1>
+        <h2>Sad because it's blind, and can't reach eggs. Help it reach eggs and nurture it. </h2>
+        <h5>(Secret! Arrows of your keyboard help it move after you start your game)</h5>
         <p>Score : {this.state.score}</p><p>Highest Score : {this.state.highestScore}</p>
         <div className="board" >
           < div className="rowsContainer">
