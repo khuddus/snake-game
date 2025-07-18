@@ -4,7 +4,7 @@
   "homepage": "http://khuddus.github.io/snake-game",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^5.0.0",
     "jquery": "^3.3.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
